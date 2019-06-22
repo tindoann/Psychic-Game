@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,72 @@
   <title>Psychic Game</title>
 </head>
 <body>
+
+
+  <h1>The Psychic Game</h1>
+  <p>Guess what letter I'm thinking of</p>
+  <div>Wins: <span id="wins-text">0</span></div>
+  <div>Losses: <span id="losses-text">0</span></div>
+  <div>Guesses: Left: <span id="guesses-left-text">9</span></div>
+  <div id="user-guesses-text">Your Guesses so far:<span id="user-text"></span></div>
   
+  
+  <script> 
+
+    // Create an array that list out all of the options (a-z). 
+
+   let computerChoices = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; 
+
+   // Creating variles to hold the number of wins, losses, guesses-left, user-guesses. They start at 0.
+
+   let wins = 0;  
+   let losses = 0; 
+   let guesses_left = 9; 
+   let user_guesses = ''; 
+
+    // Create variables that hold references to the places in the HTML where we want to display things.
+    
+    let winsText = document.getElementById('wins-text'); 
+    let lossesText = document.getElementById('losses-text');
+    let guessesLeft = document.getElementById('guesses-left-text'); 
+    let userGuesses = document.getElementById('user-guesses-text'); 
+    let userText = document.getElementById('user-text'); 
+
+
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    
+    function randGuess() {
+      computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      console.log(randGuess);
+    }
+
+   
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+      userText.textContent = event.key; 
+    // Determines which key was pressed. 
+
+    }
+
+    // Generate a random number for computer
+
+    // Wins: (# of times the user has guessed the letter correctly)
+
+    // Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+   // Guesses Left: (# of guesses left. This will update)
+
+   // Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+
+   // When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+
+   // When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+
+
+
+
+  </script>
+
 </body>
+
 </html>
