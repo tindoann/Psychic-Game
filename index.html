@@ -32,6 +32,7 @@
    let guessesAttempted = []; 
    let userGuess = document.onkeyup; 
 
+
     // Create variables that hold references to the places in the HTML where we want to display things.
     
     let wins_text = document.getElementById('wins_text'); 
@@ -40,48 +41,52 @@
     let userGuesses_text = document.getElementById('user_guesses'); 
     let guesses_attempted = document.getElementById('gusses_attempted'); 
  
-   // targeting the HTML element and updating guesses left
- 
-    function userAttempted() {
-      guessesAttempted.innerHTML = guessesAttempted.join(', ');  
-    }
+    // targeting the HTML element and updating guesses left
 
     document.onkeyup = function(event) {
     
     userGuess = event.key.toLowerCase(); 
+
+    // Generate a random number for computer
+
     let randPicker = characters[Math.floor(Math.random() * characters.length)];
     
+    // When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+    // # of times the user has guessed the letter correctly)
+
     if (userGuess == randPicker) {
       wins++; 
       wins_text.innerHTML = wins++;
       gussesLeft_text.innerHTML = 9; 
       guesses_attempted.innerHTML = 0;
     }
+   // When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+
+   // Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+
+    else if ( guessesLeft == 0) {
+      losses++;
+      losses_text.innerHTML = losses; 
+  }
+
+  // Guesses Left: (# of guesses left. This will update)
+
 
     else if (userGuess !== randPicker) {
       guessesLeft--; 
       guessesLeft_text.innerHTML = guessesLeft;
-      guesses_attempted.innerHTML = 
+      let usersAttemptedGuesses = guessesAttempted.push(userGuess);
+      guesses_attempted.innerHTML = usersAttemptedGuesses
+    }
 
 
-    
-
-  }
-    // Generate a random number for computer
-
-    // Wins: (# of times the user has guessed the letter correctly)
-
-    // Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
-
-   // Guesses Left: (# of guesses left. This will update)
 
    // Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
 
-   // When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
-
-   // When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
 
 
+  }
 
 
   </script>
