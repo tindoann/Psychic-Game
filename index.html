@@ -12,49 +12,61 @@
 
   <h1>The Psychic Game</h1>
   <p>Guess what letter I'm thinking of</p>
-  <div>Wins: <span id="wins-text">0</span></div>
-  <div>Losses: <span id="losses-text">0</span></div>
-  <div>Guesses: Left: <span id="guesses-left-text">9</span></div>
-  <div id="user-guesses-text">Your Guesses so far:<span id="user-text"></span></div>
+  <div>Wins: <span id="wins_text">0</span></div>
+  <div>Losses: <span id="losses_text">0</span></div>
+  <div>Guesses left: <span id="guesses_left">9</span></div>
+  <div id="user-guesses-text">Your Guesses so far: <span id="gusses_attempted"></span></div>
   
   
   <script> 
 
     // Create an array that list out all of the options (a-z). 
 
-   let computerChoices = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; 
+   let characters = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; 
 
    // Creating variles to hold the number of wins, losses, guesses-left, user-guesses. They start at 0.
 
    let wins = 0;  
    let losses = 0; 
-   let guesses_left = 9; 
-   let user_guesses = ''; 
+   let guessesLeft = 9; 
+   let guessesAttempted = []; 
+   let userGuess = document.onkeyup; 
 
     // Create variables that hold references to the places in the HTML where we want to display things.
     
-    let winsText = document.getElementById('wins-text'); 
-    let lossesText = document.getElementById('losses-text');
-    let guessesLeft = document.getElementById('guesses-left-text'); 
-    let userGuesses = document.getElementById('user-guesses-text'); 
-    let userText = document.getElementById('user-text'); 
-
-
-    // Randomly chooses a choice from the options array. This is the Computer's guess.
-    
-    function randGuess() {
-      computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-      console.log(randGuess);
+    let wins_text = document.getElementById('wins_text'); 
+    let losses_text = document.getElementById('losses_text');
+    let guessesLeft_text = document.getElementById('guesses_left'); 
+    let userGuesses_text = document.getElementById('user_guesses'); 
+    let guesses_attempted = document.getElementById('gusses_attempted'); 
+ 
+   // targeting the HTML element and updating guesses left
+ 
+    function userAttempted() {
+      guessesAttempted.innerHTML = guessesAttempted.join(', ');  
     }
 
-   
-    // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
-      userText.textContent = event.key; 
-    // Determines which key was pressed. 
-
+    
+    userGuess = event.key.toLowerCase(); 
+    let randPicker = characters[Math.floor(Math.random() * characters.length)];
+    
+    if (userGuess == randPicker) {
+      wins++; 
+      wins_text.innerHTML = wins++;
+      gussesLeft_text.innerHTML = 9; 
+      guesses_attempted.innerHTML = 0;
     }
 
+    else if (userGuess !== randPicker) {
+      guessesLeft--; 
+      guessesLeft_text.innerHTML = guessesLeft;
+      guesses_attempted.innerHTML = 
+
+
+    
+
+  }
     // Generate a random number for computer
 
     // Wins: (# of times the user has guessed the letter correctly)
