@@ -35,9 +35,10 @@
 
     if (userGuess == randPicker) {
       wins++; 
-      wins_text.innerHTML = wins++;
-      gussesLeft_text.innerHTML = 9; 
-      guesses_attempted.innerHTML = 0;
+      guessesLeft = 9; 
+      wins_text.innerHTML = wins;
+      guessesAttempted = []
+      guesses_attempted.innerHTML = [];
     }
    // When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
 
@@ -47,6 +48,10 @@
     else if ( guessesLeft == 0) {
       losses++;
       losses_text.innerHTML = losses; 
+      guessesLeft = 9; 
+      guessesLeft_text.innerHTML = 9; 
+      guessesAttempted = []
+      guesses_attempted.innerHTML = []; 
   }
 
   // Guesses Left: (# of guesses left. This will update)
@@ -58,5 +63,6 @@
       guesses_attempted.innerHTML = guessesAttempted
     }
 
+  
 
   }; 
